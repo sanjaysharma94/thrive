@@ -40,3 +40,43 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+.scrollable-div{
+  height: 140px;
+  width: 180px;
+  border: 1px solid red;
+  margin: 16px 16px 16px 0px;
+}
+.main-corousel{
+  width:300px;
+  margin: auto;
+}
+
+input{
+  width: 400px;
+  height: 30px;
+  border-radius: 5px;
+  border: 2px outset black;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: large;
+}
+.styles-module_carousel-arrow__26sRw{
+    background: url(https://cdn.dsmcdn.com/web/production/slick-arrow.svg) 50% no-repeat;
+    border: none;
+    cursor: pointer;
+    height: 80px;
+    outline: 0;
+    position: relative;
+    top: 30px;
+
+}
+
+
+
+.styles-module_item-provider__YgMwz {
+  overflow: hidden;
+  width: 70%;
+  cursor: pointer;
+}

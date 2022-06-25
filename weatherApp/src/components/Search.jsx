@@ -6,6 +6,6 @@ export const Search = ()=>{
 
     return (<>
     
-    <input placeholder="enter city name to search" type="text" />
+    <input style={{marginbotton:"20px"}} placeholder="enter city name to search" type="text" />
     </>)
 }
