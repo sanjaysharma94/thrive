@@ -3,8 +3,8 @@ import { UPDATE_CITY , COORDINATES } from "./action";
 const initState = {
     city:'',
     cor:{
-            longitude: "",
-            lalitude: "",
+        latitude:"",
+        longitude:""
     }
     
 }
@@ -17,8 +17,9 @@ export const Reducer = (state = initState ,action) =>{
 
         case COORDINATES: 
         return {
-                cor : {...action.payload},
-                //longitude: action.payload
+                latitude : action.payload.lat,
+                longitude:action.payload.lng
+                
             };
 
          default:
