@@ -6,28 +6,56 @@ import { coordinates, updateCity } from "../Redux/action"
 
 export const Getlocation = ()=>{
 
-const [positiocord, setPositioncord] = useState({latitude:null,longitude:null})
+const [lat, setLat] = useState(null)
+const [lng, setLng] = useState(null)
 
-//const {longitude,latitude} = useSelector((store)=>store.city)
+
+
+
 const dispatch = useDispatch();
 
-        
+const {city} = useSelector((store)=>store.credential)
+           useEffect(()=>{
+
+            // if(!city==undefined){
+            //   return
+            // } 
+
             if (!navigator.geolocation) {
-                alert('Geolocation is not supported by your browser');
-              } else {
+              alert('Geolocation is not supported by your browser');
+            } else {
+              
+              navigator.geolocation.getCurrentPosition((position) => {
+
+                  
+                setLat(position.coords.latitude)
+                setLng(position.coords.longitude)
+
+                // const cord = {
+                //   latitude:lat,
+                //   longitude:lng,
+                // }
+                  
                 
-                navigator.geolocation.getCurrentPosition((position) => {
+                
+               
+                
+              }, () => {
+                alert('Unable to retrieve your location');
+              },);
+            }
 
-                    
-                  setPositioncord({...position.coords.latitude});
-                  
-                  dispatch(coordinates(positiocord))
-                  
-                }, () => {
-                  alert('Unable to retrieve your location');
-                },);
-              }
 
+
+
+           },[])
+
+           useEffect(()=>{
+            // setLat(position.coords.latitude)
+            // setLng(position.coords.longitude)
+            
+            dispatch(coordinates({lat,lng}))
+          },[lat,lng])
              
         
 
