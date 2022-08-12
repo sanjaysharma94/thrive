@@ -15,10 +15,6 @@ dispatch(updateCity(city));
 },[city])
     
 
-    
-   
-
-
     return (<>
     
     <input onChange={(e)=>setCity(e.target.value)} placeholder="enter city name to search" type="text" />
