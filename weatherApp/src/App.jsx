@@ -10,8 +10,15 @@ import { useState } from 'react'
 
 function App() {
 
+  const [currentWeather, setCurrentWeather] = useState({})
+  const [lat,setLat] = useState(null)
+  const [lng,setLng] = useState(null)
+ 
+
+
+
   const {city} = useSelector((store)=>store.credential)
-  //const {latitude,longitude}= useSelector((store)=>store.credential)
+  
   
  
   
@@ -19,36 +26,43 @@ function App() {
 let Id;
 
   useEffect(()=>{
-
-    
-
   
      Id = setTimeout( () => {
 
-
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=2d9c313e67589677085ed508b96ae174`)
-        .then((r)=>console.log(r.data))
+      
+     if(city)
+     { axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=2d9c313e67589677085ed508b96ae174`)
+        .then((r)=>{
+          setCurrentWeather(r.data)
+          setLat(r.data.coord.lat)
+          setLng(r.data.coord.lon)
+        
+          
+        })
        .catch((e)=>console.log(e.message))
-     
-
+     }
       }, 5000); return () => clearTimeout(Id);
-
-    
-  
-    
-    // axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude={part}&appid=2d9c313e67589677085ed508b96ae174`)
-    //    .then((r)=>console.log(r.data))
-    //   .catch((e)=>console.log(e.message))
-
-    
+ 
   },[city])
 
- 
-   
+
+  useEffect(()=>{
+
+    if(lat){
+      axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=hourly,minutely,alerts&appid=08f94d62d8b644853264d64f72bedf08`)
+       .then((r)=>console.log(r.data))
+      .catch((e)=>console.log(e.message))
+    }
+
+
+  },[lat,lng])
 
   return (
     <div className="App">
       <p>hello weather app</p> 
+      
+        <p>{lat}{lng}</p>
+    
       <Getlocation></Getlocation>
       <Search></Search>
       <Slider></Slider>
