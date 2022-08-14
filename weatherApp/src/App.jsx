@@ -6,13 +6,24 @@ import axios from "axios"
 import { useDispatch , useSelector } from "react-redux"
 import { Slider } from './components/Corousel'
 import { useState } from 'react'
-
+import { Carousel } from '@trendyol-js/react-carousel';
+import { DateTime } from "luxon";
+import { forecast } from './Redux/action'
 
 function App() {
 
+  const dispatch = useDispatch();
+
   const [currentWeather, setCurrentWeather] = useState({})
+ 
   const [lat,setLat] = useState(null)
   const [lng,setLng] = useState(null)
+
+  let time = (tm)=>{
+
+    return DateTime.fromSeconds(tm).toFormat("cccc")
+  
+  };
  
 
 
@@ -41,7 +52,7 @@ let Id;
         })
        .catch((e)=>console.log(e.message))
      }
-      }, 5000); return () => clearTimeout(Id);
+      }, 1500); return () => clearTimeout(Id);
  
   },[city])
 
@@ -49,23 +60,34 @@ let Id;
   useEffect(()=>{
 
     if(lat){
+      
       axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=hourly,minutely,alerts&appid=08f94d62d8b644853264d64f72bedf08`)
-       .then((r)=>console.log(r.data))
+       .then((r)=>{
+        dispatch(forecast(r.data.daily))
+       
+    })
       .catch((e)=>console.log(e.message))
     }
 
 
   },[lat,lng])
 
+
+
   return (
     <div className="App">
       <p>hello weather app</p> 
       
         <p>{lat}{lng}</p>
+
+        <p>{currentWeather?.main?.temp}</p>
+        
     
       <Getlocation></Getlocation>
       <Search></Search>
-      <Slider></Slider>
+
+    <Slider></Slider>
+    
       
     </div>
   )
