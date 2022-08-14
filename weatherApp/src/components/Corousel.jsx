@@ -1,15 +1,26 @@
 import { Carousel } from '@trendyol-js/react-carousel';
+import { useState } from 'react';
 
-export const Slider = () => (
-    <div >
-     <Carousel className='styles-module_item-provider__YgMwz' show={5} slide={2} swiping={true}>
-    <div className='scrollable-div' color="#2d66c3">We love Web 🌐</div>
-    <div className='scrollable-div' color="#f44336">We love Developers 👩🏻‍</div>
-    <div className='scrollable-div'color="#d53f8c">This is our github</div>
-    <div className='scrollable-div' color="#f27a1a">This is our website</div>
-    <div className='scrollable-div' color="#f44336">We jsnansrs 👩🏻‍</div>
-    <div className='scrollable-div'color="#d53f8c">mamqsmqithub</div>
-    <div className='scrollable-div' color="#f27a1a">jsjkasbjkasebsite</div>
+import {  useSelector } from "react-redux"
+
+export const Slider = () => {
+
+  const [forecast , setForecast] = useState([])
+
+  const jankari = useSelector((store)=>store.credential.forecast)
+
+  setForecast(jankari)
+    
+    
+    
+     return <div>
+        <Carousel className='styles-module_item-provider__YgMwz' swiping={true}> 
+
+{forecast.map((users)=><div key={users.dt} className='scrollable-div' color="#2d66c3">{users?.temp?.dy}°C🌐</div>)}
+    
+
+
 </Carousel>
     </div>
-  )
+    
+}
