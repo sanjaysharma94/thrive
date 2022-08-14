@@ -1,11 +1,13 @@
-import { UPDATE_CITY , COORDINATES } from "./action";
+import { UPDATE_CITY , COORDINATES, FORECAST } from "./action";
 
 const initState = {
     city:'',
     cor:{
         latitude:"",
         longitude:""
-    }
+    },
+
+    forecast:[]
     
 }
 
@@ -19,8 +21,13 @@ export const Reducer = (state = initState ,action) =>{
         return {
                 latitude : action.payload.lat,
                 longitude:action.payload.lng
-                
             };
+            case FORECAST: 
+        return {
+                forecast : action.payload,
+                  
+            };
+
 
          default:
             return state 
