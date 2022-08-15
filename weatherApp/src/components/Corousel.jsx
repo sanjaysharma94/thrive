@@ -4,23 +4,16 @@ import { useState } from 'react';
 import {  useSelector } from "react-redux"
 
 export const Slider = () => {
-
-  const [forecast , setForecast] = useState([])
-
-  const jankari = useSelector((store)=>store.credential.forecast)
-
-  setForecast(jankari)
+  const jankari = useSelector((store)=>store.credential.forecast) 
     
-    
-    
-     return <div>
+  if(jankari){ return <div>
         <Carousel className='styles-module_item-provider__YgMwz' swiping={true}> 
 
-{forecast.map((users)=><div key={users.dt} className='scrollable-div' color="#2d66c3">{users?.temp?.dy}°C🌐</div>)}
+{jankari.map((users)=><div key={users.dt} className='scrollable-div' color="#2d66c3">{users?.temp?.day}°C🌐</div>)}
     
 
 
 </Carousel>
-    </div>
+    </div>}
     
 }
