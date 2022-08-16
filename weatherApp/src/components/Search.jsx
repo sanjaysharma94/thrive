@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export const Search = ()=>{
 const dispatch = useDispatch();
 
-const [city , setCity] = useState('bhopal')
+const [city , setCity] = useState(`Bhopal`)
 
 useEffect(()=>{
 dispatch(updateCity(city));  
