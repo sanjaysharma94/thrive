@@ -29,6 +29,7 @@ function App() {
 
 
   const {city} = useSelector((store)=>store.credential)
+  console.log("🚀 ~ file: App.jsx ~ line 32 ~ App ~ c̥ity", city)
   
   
  
