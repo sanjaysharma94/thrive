@@ -31,14 +31,6 @@ const {city} = useSelector((store)=>store.credential)
                 setLat(position.coords.latitude)
                 setLng(position.coords.longitude)
 
-                // const cord = {
-                //   latitude:lat,
-                //   longitude:lng,
-                // }
-                  
-                
-                
-               
                 
               }, () => {
                 alert('Unable to retrieve your location');
@@ -54,7 +46,7 @@ const {city} = useSelector((store)=>store.credential)
             // setLat(position.coords.latitude)
             // setLng(position.coords.longitude)
             
-            // dispatch(coordinates({lat,lng}))
+             dispatch(coordinates({lat,lng}))
           },[lat,lng])
              
         
