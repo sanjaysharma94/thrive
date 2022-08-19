@@ -19,8 +19,11 @@ export const Reducer = (state = initState ,action) =>{
 
         case COORDINATES: 
         return {
-                latitude : action.payload.lat,
-                longitude:action.payload.lng
+                ...state,
+                cor:{
+                    latitude : action.payload.lat,
+                    longitude: action.payload.lng
+                }
             };
             case FORECAST: 
         return {
