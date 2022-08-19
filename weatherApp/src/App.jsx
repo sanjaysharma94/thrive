@@ -1,23 +1,34 @@
 import { Search } from './components/Search'
 import { Getlocation} from "./components/Getlocation"
 import './App.css'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import axios from "axios"
 import { useDispatch , useSelector } from "react-redux"
 import { Slider } from './components/Corousel'
 import { useState } from 'react'
-import { Carousel } from '@trendyol-js/react-carousel';
 import { DateTime } from "luxon";
 import { forecast } from './Redux/action'
+import { coordinates } from "./Redux/action"
 
 function App() {
 
   const dispatch = useDispatch();
 
   const [currentWeather, setCurrentWeather] = useState({})
- 
-  const [lat,setLat] = useState(null)
-  const [lng,setLng] = useState(null)
+
+   
+
+  let latitude  = useRef("")
+  let longitude = useRef("")
+  
+  
+  console.log(useSelector((store)=>store.credential.cor.latitude))
+
+  latitude.current = useSelector((store)=>store.credential.cor.latitude)
+  longitude.current = useSelector((store)=>store.credential.cor.longitude)
+  console.log(latitude.current,longitude.current)
+
+  
 
   let time = (tm)=>{
 
@@ -25,6 +36,13 @@ function App() {
   
   };
  
+
+  // const dispatcher = ()=>{
+
+  //  console.log(lat,lng)
+  //   dispatch(coordinates({lat,lng})) 
+    
+  // }
 
 
 
@@ -46,10 +64,19 @@ let Id;
      { axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=2d9c313e67589677085ed508b96ae174`)
         .then((r)=>{
           setCurrentWeather(r.data)
-          setLat(r.data.coord.lat)
-          setLng(r.data.coord.lon)
-        
           
+          // setLat(r.data.coord.lat)
+          // setLng(r.data.coord.lon) 
+          
+          const lat = r.data.coord.lat
+         
+          const lon = r.data.coord.lon
+          console.log(lat,lon ,"at75")
+
+          dispatch(coordinates({lat,lon}))
+
+           
+               
         })
        .catch((e)=>console.log(e.message))
      }
@@ -60,9 +87,9 @@ let Id;
 
   useEffect(()=>{
 
-    if(lat){
+    if(latitude.current){
       
-      axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=hourly,minutely,alerts&appid=08f94d62d8b644853264d64f72bedf08`)
+      axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude.current}&lon=${longitude.current}&units=metric&exclude=hourly,minutely,alerts&appid=08f94d62d8b644853264d64f72bedf08`)
        .then((r)=>{
         dispatch(forecast(r.data.daily))
        
@@ -71,19 +98,20 @@ let Id;
     }
 
 
-  },[lat,lng])
+  },[currentWeather,latitude.current])
+
+
+
+  
 
 
 
   return (
     <div className="App">
       <p>hello weather app</p> 
-      
-        <p>{lat}{lng}</p>
-
-        <p>{currentWeather?.main?.temp}</p>
-        
     
+ { city && <p> CURRENT TEMPRETURE OF {city} is {currentWeather?.main?.temp} </p>}
+        
       <Getlocation></Getlocation>
       <Search></Search>
 
