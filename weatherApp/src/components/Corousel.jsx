@@ -1,19 +1,57 @@
 import { Carousel } from '@trendyol-js/react-carousel';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useRef, useState } from 'react';
 
 import {  useSelector } from "react-redux"
 
 export const Slider = () => {
-  const jankari = useSelector((store)=>store.credential.forecast) 
+
+  const data = useRef([])
+  const [data1 , setData1 ]= useState([])
+   data.current = useSelector((store)=>store.credential.forecast)
+    useEffect(()=>{
+     
+      
+        setData1(data.current)
+        
+
+    },[data.current])
+  
+   
     
-  if(jankari){ return <div>
+    
+  if(data1.length>1)return <div>
+    <h1>hello</h1>
+
         <Carousel className='styles-module_item-provider__YgMwz' show={7} slide={2}swiping={true} > 
 
-{jankari.map((users)=><div key={users.dt} className='scrollable-div' color="#2d66c3">{users?.temp?.day}°C🌐</div>)}
+{
+
+
+// data1.map((el)=><div key={el.dt} className='scrollable-div' color="#2d66c3">{el?.temp?.day}°C🌐</div>)
+data1.map((el)=><div key={el.dt} color="#2d66c3">{el?.temp?.day}°C🌐</div>)
+
+}
     
 
 
 </Carousel>
-    </div>}
+    </div>
+    else  return <div>
+    <h1>bolo</h1>
+        <Carousel className='styles-module_item-provider__YgMwz' show={7} slide={2}swiping={true} > 
+
+{
+
+// data1.map((el)=><div key={el.dt} className='scrollable-div' color="#2d66c3">{el?.temp?.day}°C🌐</div>)
+data.current.map((el)=><div key={el.dt} color="#2d66c3">{el?.temp?.day}°C🌐</div>)
+
+}
+    
+
+
+</Carousel>
+    </div>
+    
     
 }
