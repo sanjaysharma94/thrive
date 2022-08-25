@@ -14,7 +14,8 @@ const [lng, setLng] = useState(null)
 
 const dispatch = useDispatch();
 
-const {city} = useSelector((store)=>store.credential)
+
+
            useEffect(()=>{
 
             // if(!city==undefined){
