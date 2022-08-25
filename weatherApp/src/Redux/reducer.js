@@ -15,7 +15,9 @@ export const Reducer = (state = initState ,action) =>{
 
     switch (action.type) {
         case UPDATE_CITY: 
-        return {city : action.payload};
+        return {
+            ...state,
+            city : action.payload};
 
         case COORDINATES: 
         return {
@@ -27,6 +29,7 @@ export const Reducer = (state = initState ,action) =>{
             };
             case FORECAST: 
         return {
+            ...state,
                 forecast : action.payload,
                   
             };
