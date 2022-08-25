@@ -21,13 +21,8 @@ function App() {
   let latitude  = useRef("")
   let longitude = useRef("")
   
-  
-  console.log(useSelector((store)=>store.credential.cor.latitude))
-
   latitude.current = useSelector((store)=>store.credential.cor.latitude)
   longitude.current = useSelector((store)=>store.credential.cor.longitude)
-  console.log(latitude.current,longitude.current)
-
   
 
   let time = (tm)=>{
@@ -36,15 +31,6 @@ function App() {
   
   };
  
-
-  // const dispatcher = ()=>{
-
-  //  console.log(lat,lng)
-  //   dispatch(coordinates({lat,lng})) 
-    
-  // }
-
-
 
   const {city} = useSelector((store)=>store.credential)
   
@@ -61,19 +47,19 @@ let Id;
 
       
      if(city)
-     { axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=2d9c313e67589677085ed508b96ae174`)
+     {  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=2d9c313e67589677085ed508b96ae174`)
         .then((r)=>{
           setCurrentWeather(r.data)
           
           // setLat(r.data.coord.lat)
           // setLng(r.data.coord.lon) 
           
-          const lat = r.data.coord.lat
+          const lat =  r.data.coord.lat
          
-          const lon = r.data.coord.lon
-          console.log(lat,lon ,"at75")
+          const lng =  r.data.coord.lon
+          
 
-          dispatch(coordinates({lat,lon}))
+          dispatch(coordinates({lat,lng}))
 
            
                
@@ -98,7 +84,7 @@ let Id;
     }
 
 
-  },[currentWeather,latitude.current])
+  },[latitude.current])
 
 
 
