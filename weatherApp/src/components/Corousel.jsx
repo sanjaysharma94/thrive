@@ -8,11 +8,11 @@ export const Slider = () => {
 
   const data = useRef([])
   
-   data.current = useSelector((store)=>store.credential.forecast)
+   
     useEffect(()=>{
      
       
-        setData1(data.current)
+        data.current = useSelector((store)=>store.credential.forecast)
         
 
     },[data.current])
