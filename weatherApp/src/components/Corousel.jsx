@@ -13,7 +13,7 @@ export const Slider = () => {
       
         data.current = useSelector((store)=>store.credential.forecast)
         
-
+console.log(data.current)
   
   
    
