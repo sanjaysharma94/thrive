@@ -7,17 +7,11 @@ import {  useSelector } from "react-redux"
 export const Slider = () => {
 
   const data = useRef([])
-  
-   
-     
-      
-        data.current = useSelector((store)=>store.credential.forecast)
+
+ data.current = useSelector((store)=>store.credential.forecast)
         
 console.log(data.current)
-  
-  
-   
-    
+
     
   return <div>
     <h1>hello</h1>
