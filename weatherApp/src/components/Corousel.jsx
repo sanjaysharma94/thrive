@@ -19,10 +19,11 @@ console.log(data.current)
    
     
     
-  if(data.current.length>1)return <div>
+  return <div>
     <h1>hello</h1>
 
-        <Carousel className='styles-module_item-provider__YgMwz' show={7} slide={2}swiping={true} > 
+        {/* <Carousel className='styles-module_item-provider__YgMwz' show={7} slide={2}swiping={true} >  */}
+        <Carousel show={7} slide={2}swiping={true} > 
 
 {
 
@@ -36,21 +37,9 @@ data.current.map((el)=><div key={el.dt} color="#2d66c3">{el?.temp?.day}°C🌐</
 
 </Carousel>
     </div>
-    else  return <div>
-    <h1>bolo</h1>
-        <Carousel className='styles-module_item-provider__YgMwz' show={7} slide={2}swiping={true} > 
-
-{
-
-// data1.map((el)=><div key={el.dt} className='scrollable-div' color="#2d66c3">{el?.temp?.day}°C🌐</div>)
-data.current.map((el)=><div key={el.dt} color="#2d66c3">{el?.temp?.day}°C🌐</div>)
-
-}
+  
     
 
 
-</Carousel>
-    </div>
-    
     
 }
