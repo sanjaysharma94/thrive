@@ -20,7 +20,7 @@ export const Slider = () => {
    
     
     
-  if(data1.length>1)return <div>
+  if(data.current.length>1)return <div>
     <h1>hello</h1>
 
         <Carousel className='styles-module_item-provider__YgMwz' show={7} slide={2}swiping={true} > 
@@ -29,7 +29,7 @@ export const Slider = () => {
 
 
 // data1.map((el)=><div key={el.dt} className='scrollable-div' color="#2d66c3">{el?.temp?.day}°C🌐</div>)
-data1.map((el)=><div key={el.dt} color="#2d66c3">{el?.temp?.day}°C🌐</div>)
+data.current.map((el)=><div key={el.dt} color="#2d66c3">{el?.temp?.day}°C🌐</div>)
 
 }
     
