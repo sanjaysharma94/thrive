@@ -9,13 +9,12 @@ export const Slider = () => {
   const data = useRef([])
   
    
-    useEffect(()=>{
      
       
         data.current = useSelector((store)=>store.credential.forecast)
         
 
-    },[data.current])
+  
   
    
     
