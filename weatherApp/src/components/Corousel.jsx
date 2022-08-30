@@ -7,7 +7,7 @@ import {  useSelector } from "react-redux"
 export const Slider = () => {
 
   const data = useRef([])
-  const [data1 , setData1 ]= useState([])
+  
    data.current = useSelector((store)=>store.credential.forecast)
     useEffect(()=>{
      
