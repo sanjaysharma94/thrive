@@ -6,30 +6,18 @@ import {  useSelector } from "react-redux"
 
 export const Slider = () => {
 
-  const data = useRef([])
+  //const data = useRef([])
 
- data.current = useSelector((store)=>store.credential.forecast)
+const  data = useSelector((store)=>store.credential.forecast)
         
-console.log(data.current)
+ //console.log(data)
 
     
   return <div>
     <h1>hello</h1>
+    <div>{data[0]?.temp?.day}</div>
 
-        {/* <Carousel className='styles-module_item-provider__YgMwz' show={7} slide={2}swiping={true} >  */}
-        <Carousel show={7} slide={2}swiping={true} > 
-
-{
-
-
-// data1.map((el)=><div key={el.dt} className='scrollable-div' color="#2d66c3">{el?.temp?.day}°C🌐</div>)
-data.current.map((el)=><div key={el.dt} color="#2d66c3">{el?.temp?.day}°C🌐</div>)
-
-}
-    
-
-
-</Carousel>
+       {data.map((e)=><div key = {e.dt}>{e.temp.day}</div>)}
     </div>
   
     
