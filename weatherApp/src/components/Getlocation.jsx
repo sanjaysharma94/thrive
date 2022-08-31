@@ -18,10 +18,6 @@ const dispatch = useDispatch();
 
            useEffect(()=>{
 
-            // if(!city==undefined){
-            //   return
-            // } 
-
             if (!navigator.geolocation) {
               alert('Geolocation is not supported by your browser');
             } else {
