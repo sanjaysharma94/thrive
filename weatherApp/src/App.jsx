@@ -66,7 +66,7 @@ let Id;
         })
        .catch((e)=>console.log(e.message))
      }
-      }, 1500); return () => clearTimeout(Id);
+      }, 200); return () => clearTimeout(Id);
  
   },[city])
 
@@ -95,9 +95,6 @@ let Id;
   return (
     <div className="App">
       <p>hello weather app</p> 
-    
- { city && <p> CURRENT TEMPRETURE OF {city} is {currentWeather?.main?.temp} </p>}
-        
       <Getlocation></Getlocation>
       <Search></Search>
 
