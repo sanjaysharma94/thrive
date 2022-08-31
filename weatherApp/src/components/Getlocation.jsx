@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react"
-import { useDispatch , useSelector } from "react-redux"
-import { coordinates, updateCity } from "../Redux/action"
+import { useDispatch  } from "react-redux"
+import { coordinates } from "../Redux/action"
 
 
 export const Getlocation = ()=>{
@@ -40,10 +40,9 @@ const dispatch = useDispatch();
            },[])
 
            useEffect(()=>{
-            // setLat(position.coords.latitude)
-            // setLng(position.coords.longitude)
-            
-             dispatch(coordinates({lat,lng}))
+
+             if(lat) dispatch(coordinates({lat,lng}))
+
           },[lat,lng])
              
         
