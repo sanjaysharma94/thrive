@@ -11,7 +11,13 @@ const [city , setCity] = useState()
 
 useEffect(()=>{
 
-    if(city){dispatch(updateCity(city));  }
+    if(city){
+        
+        const id = setTimeout(()=>{
+
+            dispatch(updateCity(city));
+        },5000); return () => clearTimeout(id)
+          }
 
 },[city])
     
