@@ -5,12 +5,10 @@ import { useRef, useState } from 'react';
 import {  useSelector } from "react-redux"
 
 export const Slider = () => {
-
-  //const data = useRef([])
+  //hii
 
 const  data = useSelector((store)=>store.credential.forecast)
-        
- //console.log(data)
+         
 
     
   return <div>
