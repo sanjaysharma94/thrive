@@ -1,7 +1,7 @@
-import { Carousel } from '@trendyol-js/react-carousel';
+
 import { useEffect } from 'react';
 import { useRef, useState } from 'react';
-
+import { DateTime } from "luxon";
 import {  useSelector } from "react-redux"
 
 export const Slider = () => {
@@ -9,7 +9,11 @@ export const Slider = () => {
 
 const  data = useSelector((store)=>store.credential.forecast)
          
+let time = (tm)=>{
 
+  return DateTime.fromSeconds(tm).toFormat("cccc")
+
+};
     
   return <div>
     <h1>hello</h1>
