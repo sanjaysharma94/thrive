@@ -6,7 +6,6 @@ import axios from "axios"
 import { useDispatch , useSelector } from "react-redux"
 import { Slider } from './components/Corousel'
 import { useState } from 'react'
-import { DateTime } from "luxon";
 import { forecast } from './Redux/action'
 import { coordinates } from "./Redux/action"
 
@@ -25,11 +24,7 @@ function App() {
   longitude.current = useSelector((store)=>store.credential.cor.longitude)
   
 
-  let time = (tm)=>{
-
-    return DateTime.fromSeconds(tm).toFormat("cccc")
   
-  };
  
 
   const {city} = useSelector((store)=>store.credential)
