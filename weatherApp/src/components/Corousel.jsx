@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRef, useState } from 'react';
 import { DateTime } from "luxon";
 import {  useSelector } from "react-redux"
+import Whirligig from "react-whirligig";
 
 export const Slider = () => {
   //hii
