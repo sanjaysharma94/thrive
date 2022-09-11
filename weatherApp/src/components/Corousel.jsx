@@ -9,7 +9,7 @@ export const Slider = () => {
  
 
 const  data = useSelector((store)=>store.credential.forecast)
-console.log(data)
+
          
 let time = (tm)=>{
 
@@ -18,11 +18,11 @@ let time = (tm)=>{
 };
     
   return (
-    <div>
+    <div >
       
         {data.map((e) => (
           <div
-            key={e}
+            key={e.dt}
             style={{
               display: "inline-block",
               border: "dotted black",
