@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 import { useRef, useState } from 'react';
 import { DateTime } from "luxon";
 import {  useSelector } from "react-redux"
-import Whirligig from "react-whirligig";
+
 
 export const Slider = () => {
-  //hii
+ 
 
 const  data = useSelector((store)=>store.credential.forecast)
 console.log(data)
@@ -19,7 +19,7 @@ let time = (tm)=>{
     
   return (
     <div>
-      <Whirligig visibleSlides={7} gutter="1em">
+      
         {data.map((e) => (
           <div
             key={e}
@@ -45,7 +45,7 @@ let time = (tm)=>{
             <h4 style={{ marginTop: 0.5 }}>clear</h4>
           </div>
         ))}
-      </Whirligig>
+      
     </div>
   )
   
