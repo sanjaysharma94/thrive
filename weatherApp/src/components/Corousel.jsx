@@ -31,7 +31,7 @@ let time = (tm)=>{
             }}
           >
             <p style={{ marginTop: 0.5, marginBottom: 0.5 }}>{time(e.dt)}</p>
-            <p style={{ marginTop: 0.5, marginBottom: 0.5 }}>{e.temp.day}</p>
+            <p style={{ marginTop: 0.5, marginBottom: 0.5 }}>{e.temp.day}°C</p>
             <img
               style={{
                 width: "100%",
