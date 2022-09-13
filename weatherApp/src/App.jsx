@@ -89,13 +89,13 @@ let Id;
 
   return (
     <div className="App">
-      <p>hello weather app</p> 
+      <p style={{ fontsize :  "larger" , color:"#4a54f1"}}>𝓗𝓮𝓵𝓵𝓸 𝓦𝓮𝓪𝓽𝓱𝓮𝓻 𝓐𝓹𝓹</p> 
       <Getlocation></Getlocation>
       <Search></Search>
 
     <Slider></Slider>
     
-      
+        
     </div>
   )
 }
