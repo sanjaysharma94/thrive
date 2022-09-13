@@ -90,6 +90,7 @@ let Id;
   return (
     <div className="App">
       <p style={{ fontsize :  "larger" , color:"#4a54f1"}}>𝓗𝓮𝓵𝓵𝓸 𝓦𝓮𝓪𝓽𝓱𝓮𝓻 𝓐𝓹𝓹</p> 
+      <p>current weather</p>
       <Getlocation></Getlocation>
       <Search></Search>
 
