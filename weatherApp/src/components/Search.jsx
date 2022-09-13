@@ -16,7 +16,7 @@ useEffect(()=>{
         const id = setTimeout(()=>{
 
             dispatch(updateCity(city));
-        },5000); return () => clearTimeout(id)
+        },500); return () => clearTimeout(id)
           }
 
 },[city])
@@ -24,6 +24,6 @@ useEffect(()=>{
 
     return (<>
     
-    <input onChange={(e)=>setCity(e.target.value)} placeholder="enter city name to search" type="text" />
+    <input onChange={(e)=>setCity(e.target.value)} placeholder="Enter City Name" type="text" />
     </>)
 }
