@@ -16,7 +16,7 @@ useEffect(()=>{
         const id = setTimeout(()=>{
 
             dispatch(updateCity(city));
-        },550); return () => clearTimeout(id)
+        },1000); return () => clearTimeout(id)
           }
 
 },[city])
